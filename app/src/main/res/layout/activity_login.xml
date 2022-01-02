@@ -12,14 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/abesRed">
-        <TextView
-            android:id="@+id/toolbarVal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:text="ToBeUpdated"
-            ></TextView>
+
     </androidx.appcompat.widget.Toolbar>
 
         <ImageView

@@ -9,12 +9,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:visibility="gone"
             app:cardBackgroundColor="#2D000000"
             app:cardCornerRadius="12dp">
 
@@ -73,12 +76,17 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UNDER DEVELOPMENT"
-            android:textSize="52dp"
-            android:gravity="center">
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/ubuntu_medium"
+            android:foregroundGravity="center_vertical|center"
+            android:gravity="center|center_vertical"
+            android:text="Under Development"
+            android:textAlignment="center"
+            android:textSize="52dp">
 
         </TextView>
     </LinearLayout>

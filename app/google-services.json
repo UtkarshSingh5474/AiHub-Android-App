@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "828553486364",
+    "project_id": "wificonnect-3203e",
+    "storage_bucket": "wificonnect-3203e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828553486364:android:1b42ee38ced1176e933fd9",
+        "android_client_info": {
+          "package_name": "com.example.wificonnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828553486364-k9se2uba0hh46pk4939vs996vnifdp4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqPEoLagQWzeG4OpZb7-1wnoOfbm4I6FM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828553486364-k9se2uba0hh46pk4939vs996vnifdp4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

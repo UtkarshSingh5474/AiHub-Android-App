@@ -115,9 +115,6 @@ public class Login extends AppCompatActivity {
                     public void onReceiveValue(String s) {
                         Log.d("ReceivedValue", "onReceiveValue: " +s);
 
-                        TextView textView = findViewById(R.id.toolbarVal);
-                        textView.setText(s);
-
                         //Toast.makeText(getApplicationContext(), "Connected Successfully!" +username+" "+ password,
                           //      Toast.LENGTH_SHORT).show();
                     }
@@ -126,6 +123,7 @@ public class Login extends AppCompatActivity {
 
                 if (url.contains("google")){
                     Toast.makeText(getApplicationContext(), "Connected Successfully", Toast.LENGTH_LONG).show();
+                    finishAndRemoveTask();
                 }
 
             }});
