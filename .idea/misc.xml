@@ -9,9 +9,15 @@
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/ic_back.xml" value="0.2203125" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/ic_credentials.xml" value="0.2203125" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/ic_settings.xml" value="0.2203125" />
+        <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/ic_user.xml" value="0.2203125" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/ic_wi_fi.xml" value="0.2203125" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/round_shape_btn.xml" value="0.2203125" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/rounded_corners.xml" value="0.2203125" />
+        <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/rounded_corners_selected.xml" value="0.2203125" />
+        <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/rounded_corners_unselected.xml" value="0.2203125" />
+        <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/rounded_edittext.xml" value="0.2203125" />
+        <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/rounded_edt.xml" value="0.2203125" />
+        <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/drawable/utkarshs.xml" value="0.2203125" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android/Android_Projects/WiFiConnect/app/src/main/res/layout/activity_wifi.xml" value="0.1" />

@@ -4,11 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="24dp"
     tools:context=".ConnectFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
 
+
+    <ImageView
+        android:id="@+id/addToHomescreen"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@android:drawable/ic_menu_add" />
 
     <ImageButton
         android:id="@+id/connectBtn"
@@ -17,16 +26,14 @@
         android:layout_below="@id/connectBtn"
         android:layout_centerInParent="true"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_wi_fi"
-        />
-
+        android:src="@drawable/ic_wi_fi" />
 
 
     <TextView
         android:id="@+id/note"
-        android:layout_below="@id/connectBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/connectBtn"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"

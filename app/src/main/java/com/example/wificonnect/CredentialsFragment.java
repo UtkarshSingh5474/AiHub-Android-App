@@ -4,8 +4,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.ColorInt;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
 
 import com.example.wificonnect.databinding.FragmentCredentialsBinding;
 
@@ -34,6 +39,34 @@ public class CredentialsFragment extends Fragment {
         String password = sh.getString("password", null);
         binding.admissionNumber.setText(username);
         binding.password.setText(password);
+
+
+        binding.password.setOnClickListener(view1 -> {
+            binding.password.setFocusableInTouchMode(true);
+            binding.password.requestFocus();
+            binding.textfieldPass.setBackgroundResource(R.drawable.rounded_corners_selected);
+            binding.textfieldPass.setStartIconTintList(ColorStateList.valueOf(Color.WHITE));
+            binding.password.setBackgroundResource(R.drawable.rounded_corners_selected);
+
+            binding.admissionNumber.setFocusableInTouchMode(false);
+            binding.textfieldAdmNo.setBackgroundResource(R.drawable.rounded_corners_unselected);
+            binding.textfieldAdmNo.setStartIconTintList(ColorStateList.valueOf(ContextCompat.getColor(getActivity(),R.color.grey_subtext)));
+            binding.admissionNumber.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.dark_purple_background));
+        });
+
+        binding.admissionNumber.setOnClickListener(view1 -> {
+            binding.admissionNumber.setFocusableInTouchMode(true);
+            binding.admissionNumber.requestFocus();
+            binding.textfieldAdmNo.setBackgroundResource(R.drawable.rounded_corners_selected);
+            binding.textfieldAdmNo.setStartIconTintList(ColorStateList.valueOf(Color.WHITE));
+            binding.admissionNumber.setBackgroundResource(R.drawable.rounded_corners_selected);
+
+            binding.password.setFocusableInTouchMode(false);
+            binding.textfieldPass.setBackgroundResource(R.drawable.rounded_corners_unselected);
+            binding.textfieldPass.setStartIconTintList(ColorStateList.valueOf(ContextCompat.getColor(getActivity(),R.color.grey_subtext)));
+            binding.password.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.dark_purple_background));
+        });
+
 
         binding.btnSave.setOnClickListener(view1 -> {
 

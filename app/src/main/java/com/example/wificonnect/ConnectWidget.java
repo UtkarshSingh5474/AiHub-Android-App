@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 
@@ -28,7 +27,7 @@ public class ConnectWidget extends AppWidgetProvider {
         views.setOnClickPendingIntent(R.id.connectBtn, configPendingIntent);
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
-        views.setInt(R.id.connectBtn, "setBackgroundResource", R.drawable.rounded_corners);
+        views.setInt(R.id.connectBtn, "setBackgroundResource", R.drawable.rounded_corners_selected);
     }
 
     @Override

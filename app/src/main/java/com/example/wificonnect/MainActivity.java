@@ -8,6 +8,11 @@ import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
+import android.graphics.drawable.Icon;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,6 +64,9 @@ BottomNavigationView bottomNav;
 
                 return true;
             }});
+
+
+
     }
 
     public void changeFragment(Fragment fragment, int id){
