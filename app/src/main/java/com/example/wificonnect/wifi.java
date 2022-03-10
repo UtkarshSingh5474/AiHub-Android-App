@@ -40,56 +40,45 @@ public class wifi extends AppCompatActivity {
 
         String networkPass = "justcause";
 
-        WifiNetworkSpecifier.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            builder = new WifiNetworkSpecifier.Builder();
-            builder.setSsid("archeva");
-            builder.setWpa2Passphrase("justcause");
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q){
+            WifiNetworkSuggestion.Builder builder = new WifiNetworkSuggestion.Builder()
+                    .setSsid("archeva")
+                    .setWpa2Passphrase("justcause");
+            WifiNetworkSuggestion suggestion = builder.build();
 
-            WifiNetworkSpecifier wifiNetworkSpecifier = builder.build();
+            ArrayList<WifiNetworkSuggestion> list = new ArrayList<>();
+            list.add(suggestion);
 
-            NetworkRequest.Builder networkRequestBuilder1 = new NetworkRequest.Builder();
-            networkRequestBuilder1.addTransportType(NetworkCapabilities.TRANSPORT_WIFI);
-            networkRequestBuilder1.setNetworkSpecifier(wifiNetworkSpecifier);
+            WifiManager manager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            int status = manager.addNetworkSuggestions(list);
 
-            NetworkRequest nr = networkRequestBuilder1.build();
-            ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-            ConnectivityManager.NetworkCallback networkCallback = new
-                    ConnectivityManager.NetworkCallback() {
+            if (status == STATUS_NETWORK_SUGGESTIONS_SUCCESS) {
+                WifiNetworkSpecifier.Builder builder1 = new WifiNetworkSpecifier.Builder();
+                builder1.setSsid("archeva");
+                builder1.setWpa2Passphrase("justcause");
+
+                WifiNetworkSpecifier wifiNetworkSpecifier = builder1.build();
+                NetworkRequest.Builder networkRequestBuilder = new NetworkRequest.Builder();
+                networkRequestBuilder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI);
+                networkRequestBuilder.addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_RESTRICTED);
+                networkRequestBuilder.addCapability(NetworkCapabilities.NET_CAPABILITY_TRUSTED);
+                networkRequestBuilder.setNetworkSpecifier(wifiNetworkSpecifier);
+                NetworkRequest networkRequest = networkRequestBuilder.build();
+                ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if (cm != null) {
+                    cm.requestNetwork(networkRequest, new ConnectivityManager.NetworkCallback() {
                         @Override
                         public void onAvailable(@NonNull Network network) {
+                            //Use this network object to Send request.
+                            //eg - Using OkHttp library to create a service request
+                            Toast.makeText(wifi.this, "done", Toast.LENGTH_SHORT).show();
                             super.onAvailable(network);
-                            Log.d("wifi_conn", "onAvailable:" + network);
-                            assert cm != null;
-                            cm.bindProcessToNetwork(network);
                         }
-
-                    };
-            assert cm != null;
-            cm.requestNetwork(nr, networkCallback);
+                    });
+            }
         }
 
 
-//        WifiConfiguration wifiConfig = new WifiConfiguration();
-//        if (wifi.isWifiEnabled() == false) {
-//            Toast.makeText(getApplicationContext(), "wifi is disabled..making it enabled", Toast.LENGTH_LONG).show();
-//            wifi.setWifiEnabled(true);
-//        }
-//        wifiConfig.SSID = String.format("\"%s\"", "archeva");
-//        wifiConfig.preSharedKey = String.format("\"%s\"", "justcause");
-//        //wifiConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-//
-//        wifiConfig.status = WifiConfiguration.Status.ENABLED;
-//        wifiConfig.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
-//        wifiConfig.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
-//        wifiConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
-//        wifiConfig.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
-//        wifiConfig.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
-//        wifiConfig.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
-//        wifiConfig.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-//        //remember id
-//        int netId = wifi.addNetwork(wifiConfig);
-//        wifi.enableNetwork(netId, true);
-
     }
+}
 }

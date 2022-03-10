@@ -3,6 +3,8 @@ package com.example.wificonnect;
 import static android.content.Context.MODE_APPEND;
 
 import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,24 +18,29 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.Settings;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.wificonnect.databinding.FragmentConnectBinding;
 import com.example.wificonnect.databinding.FragmentCredentialsBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class ConnectFragment extends Fragment {
 
     private FragmentConnectBinding binding;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,28 +49,52 @@ public class ConnectFragment extends Fragment {
         binding = FragmentConnectBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            ShortcutManager shortcutManager = (ShortcutManager)getActivity().getSystemService(ShortcutManager.class);
-            if (shortcutManager.isRequestPinShortcutSupported()) {
-                binding.addToHomescreen.setVisibility(View.VISIBLE);
 
-                binding.addToHomescreen.setOnClickListener(view1 -> {
-                    Intent intent2 = new Intent(getActivity(), Login.class);
-                    intent2.setAction(Intent.ACTION_VIEW);
-                    ShortcutInfo shortcut = new ShortcutInfo.Builder(getActivity(), "pinned-shortcut")
-                            .setShortLabel("Connect")
-                            .setLongLabel("Connect")
-                            .setIcon(Icon.createWithResource(getActivity(), R.mipmap.ic_launcher_round))
-                            .setIntent(intent2)
-                            .build();
-                    Intent pinnedShortcutCallbackIntent =
-                            shortcutManager.createShortcutResultIntent(shortcut);
-                    PendingIntent successCallback = PendingIntent.getBroadcast(getActivity(), 0,
-                            pinnedShortcutCallbackIntent, 0);
-                    shortcutManager.requestPinShortcut(shortcut,successCallback.getIntentSender());
-                });
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        binding.secretText.setOnClickListener(view1 -> {
+            //binding.secretText.setTextColor(ContextCompat.getColor(getContext(),R.color.grey_subtext));
+            Toast.makeText(getContext(), "Developed By Utkarsh Singh", Toast.LENGTH_SHORT).show();
+        });
+
+        binding.menu.setOnClickListener(view1 -> {
+            PopupMenu popup = new PopupMenu(getContext(), binding.menu);
+            //Inflating the Popup using xml file
+            popup.getMenuInflater()
+                    .inflate(R.menu.options_menu, popup.getMenu());
+
+            //registering popup with OnMenuItemClickListener
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                public boolean onMenuItemClick(MenuItem item) {
+
+                    if ("Feedback".equals(item.getTitle())) {
+                        sendEmail();
+                    }
+                    return true;
+                }
+            });
+
+            popup.show(); //showing popup menu
+        });
+
+        binding.widgetLL.setOnClickListener(view1 -> {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                AppWidgetManager mAppWidgetManager = (AppWidgetManager) getActivity().getSystemService(AppWidgetManager.class);
+
+                ComponentName myProvider = new ComponentName(getContext(), ConnectWidget.class);
+                Intent pinnedWidgetCallbackIntent = new Intent(getContext(), ConnectWidget.class);
+                PendingIntent successCallback = PendingIntent.getBroadcast(getContext(), 0,
+                        pinnedWidgetCallbackIntent, 0);
+                mAppWidgetManager.requestPinAppWidget(myProvider, null, successCallback);
             }
-        }
+
+
+        });
+
+
+
         binding.connectBtn.setOnClickListener(view1 -> {
 
 
@@ -87,7 +118,7 @@ public class ConnectFragment extends Fragment {
 
             if (username.isEmpty() || password.isEmpty()){
                 Snackbar snackbar = Snackbar.make(view,"Please update your AdmNo and Password in the " +
-                        "credentials tab",Snackbar.LENGTH_INDEFINITE)
+                        "credentials tab.",Snackbar.LENGTH_INDEFINITE)
                         .setAction("Okay", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -97,7 +128,7 @@ public class ConnectFragment extends Fragment {
 
                             }
                         });
-                snackbar.setActionTextColor(Color.RED);
+                snackbar.setActionTextColor(ContextCompat.getColor(getContext(),R.color.green_accent));
                 snackbar.show();
             }else {
                 if (!wifiManager.isWifiEnabled()){
@@ -113,5 +144,17 @@ public class ConnectFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void sendEmail(){
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"utkarshsingh.5474@gmail.com"});
+        email.putExtra(Intent.EXTRA_SUBJECT, "WifiConnect App FeedBack");
+        email.putExtra(Intent.EXTRA_TEXT, "Android API Version: " + Build.VERSION.SDK_INT);
+
+        //need this to prompts email client only
+        email.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(email, "Choose an Email client :"));
     }
 }

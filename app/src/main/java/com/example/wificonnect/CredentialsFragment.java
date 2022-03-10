@@ -2,28 +2,40 @@ package com.example.wificonnect;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
 import com.example.wificonnect.databinding.FragmentCredentialsBinding;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class CredentialsFragment extends Fragment {
 
     private FragmentCredentialsBinding binding;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,44 +43,105 @@ public class CredentialsFragment extends Fragment {
         binding = FragmentCredentialsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
         SharedPreferences sh = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
 
         // The value will be default as empty string because for
         // the very first time when the app is opened, there is nothing to show
-        String username = sh.getString("username",null);
+        String username = sh.getString("username", null);
         String password = sh.getString("password", null);
         binding.admissionNumber.setText(username);
         binding.password.setText(password);
 
-
-        binding.password.setOnClickListener(view1 -> {
-            binding.password.setFocusableInTouchMode(true);
-            binding.password.requestFocus();
-            binding.textfieldPass.setBackgroundResource(R.drawable.rounded_corners_selected);
-            binding.textfieldPass.setStartIconTintList(ColorStateList.valueOf(Color.WHITE));
-            binding.password.setBackgroundResource(R.drawable.rounded_corners_selected);
-
-            binding.admissionNumber.setFocusableInTouchMode(false);
-            binding.textfieldAdmNo.setBackgroundResource(R.drawable.rounded_corners_unselected);
-            binding.textfieldAdmNo.setStartIconTintList(ColorStateList.valueOf(ContextCompat.getColor(getActivity(),R.color.grey_subtext)));
-            binding.admissionNumber.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.dark_purple_background));
+        binding.mainLayout.setOnClickListener(view1 -> {
+            closeKeyboard(view1);
         });
 
-        binding.admissionNumber.setOnClickListener(view1 -> {
-            binding.admissionNumber.setFocusableInTouchMode(true);
-            binding.admissionNumber.requestFocus();
+        if(!binding.admissionNumber.getText().toString().isEmpty()){
+            binding.admissionNumber.setBackgroundResource(R.drawable.rounded_corners_selected);
             binding.textfieldAdmNo.setBackgroundResource(R.drawable.rounded_corners_selected);
             binding.textfieldAdmNo.setStartIconTintList(ColorStateList.valueOf(Color.WHITE));
-            binding.admissionNumber.setBackgroundResource(R.drawable.rounded_corners_selected);
+            binding.textfieldAdmNo.setHintTextColor(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.grey_subtext)));
+        }
 
-            binding.password.setFocusableInTouchMode(false);
-            binding.textfieldPass.setBackgroundResource(R.drawable.rounded_corners_unselected);
-            binding.textfieldPass.setStartIconTintList(ColorStateList.valueOf(ContextCompat.getColor(getActivity(),R.color.grey_subtext)));
-            binding.password.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.dark_purple_background));
+        if(!binding.password.getText().toString().isEmpty()){
+            binding.password.setBackgroundResource(R.drawable.rounded_corners_selected);
+            binding.textfieldPass.setBackgroundResource(R.drawable.rounded_corners_selected);
+            binding.textfieldPass.setStartIconTintList(ColorStateList.valueOf(Color.WHITE));
+            binding.textfieldPass.setHintTextColor(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.grey_subtext)));
+        }
+
+
+
+        binding.admissionNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String text = s.toString();
+                if (text.length()!=0){
+                    binding.admissionNumber.setBackgroundResource(R.drawable.rounded_corners_selected);
+                    binding.textfieldAdmNo.setBackgroundResource(R.drawable.rounded_corners_selected);
+                    binding.textfieldAdmNo.setStartIconTintList(ColorStateList.valueOf(Color.WHITE));
+                    binding.textfieldAdmNo.setHintTextColor(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.grey_subtext)));
+                }else {
+                    binding.textfieldAdmNo.setBackgroundResource(R.drawable.rounded_corners_unselected);
+                    binding.textfieldAdmNo.setStartIconTintList(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.grey_subtext)));
+                    binding.admissionNumber.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.dark_purple_background));
+                }
+
+            }
+        });
+
+        binding.password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String text = s.toString();
+                if (text.length()!=0){
+                    binding.password.setBackgroundResource(R.drawable.rounded_corners_selected);
+                    binding.textfieldPass.setBackgroundResource(R.drawable.rounded_corners_selected);
+                    binding.textfieldPass.setStartIconTintList(ColorStateList.valueOf(Color.WHITE));
+                    binding.textfieldPass.setHintTextColor(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.grey_subtext)));
+                }else {
+                    binding.textfieldPass.setBackgroundResource(R.drawable.rounded_corners_unselected);
+                    binding.textfieldPass.setStartIconTintList(ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.grey_subtext)));
+                    binding.password.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.dark_purple_background));
+                }
+
+            }
         });
 
 
         binding.btnSave.setOnClickListener(view1 -> {
+
+            if(binding.admissionNumber.getText().toString().isEmpty()){
+                binding.admissionNumber.setError("Cannot be empty!");
+                binding.admissionNumber.requestFocus();
+                return;
+            }
+
+            if(binding.password.getText().toString().isEmpty()){
+                binding.password.setError("Cannot be empty!");
+                binding.password.requestFocus();
+                return;
+            }
 
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
 
@@ -89,12 +162,24 @@ public class CredentialsFragment extends Fragment {
 
         });
 
+
+
         return view;
     }
 
-    private void closeKeyboard(View view) { InputMethodManager imm =
-            (InputMethodManager)view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm.isActive())
-            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+    public void closeKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view1 = getActivity().getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view1 == null) {
+            view1 = new View(view.getContext());
+        }else {
+            getActivity().getCurrentFocus().clearFocus();
+        }
+
+        imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
     }
 }

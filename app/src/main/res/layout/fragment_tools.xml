@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_purple_background"
     tools:context=".ToolsFragment">
 
     <LinearLayout
@@ -86,8 +87,10 @@
             android:gravity="center|center_vertical"
             android:text="Under Development"
             android:textAlignment="center"
-            android:textSize="52dp">
+            android:textSize="52dp"
+            android:textColor="@color/grey_subtext">
 
         </TextView>
+
     </LinearLayout>
 </RelativeLayout>

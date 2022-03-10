@@ -2,7 +2,9 @@
     <string name="app_name">WiFiConnect</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="wifi_note"><u><b>Note</b></u> Please Connect TO <b>ABESEC</b> Wifi Network Before Pressing The Connect Button.</string>
+    <string name="wifi_note"><u><b>Note:</b></u> Please Connect To <b>ABESEC</b> Wifi Network Before Pressing The Connect Button.</string>
+    <string name="creds_note"><u><b>Note:</b></u> Your Credentials Will Only Be Saved On Your Phone Locally.</string>
+
 
     <string-array name="Hours">
         <item>0</item>

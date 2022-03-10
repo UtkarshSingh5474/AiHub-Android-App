@@ -7,7 +7,7 @@ android {
     buildFeatures {
         viewBinding true
     }
-    compileSdk 29
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.example.wificonnect"
@@ -35,6 +35,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 dependencies {
 
+    implementation "androidx.work:work-runtime:2.7.1"
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'androidx.appcompat:appcompat:1.3.1'
@@ -44,5 +45,4 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation 'com.github.fornewid:neumorphism:0.3.0'
 }

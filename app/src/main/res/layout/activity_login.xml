@@ -7,22 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-    <androidx.appcompat.widget.Toolbar
+
+
+
+    <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/abesRed">
-
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_alignParentTop="true"
+        android:background="@color/dark_purple_background"
+        >
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             android:src="@drawable/ic_back"
-
-            android:layout_marginStart="20dp" />
+            app:tint="@color/green_accent" />
+    </RelativeLayout>
 
 
     <WebView
