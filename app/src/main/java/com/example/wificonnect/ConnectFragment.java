@@ -1,27 +1,19 @@
 package com.example.wificonnect;
 
-import static android.content.Context.MODE_APPEND;
-
+import android.animation.Animator;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ShortcutInfo;
-import android.content.pm.ShortcutManager;
-import android.graphics.Color;
-import android.graphics.drawable.Icon;
-import android.net.wifi.SupplicantState;
-import android.net.wifi.WifiInfo;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.Settings;
 import android.view.LayoutInflater;
@@ -32,10 +24,11 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.wificonnect.databinding.FragmentConnectBinding;
-import com.example.wificonnect.databinding.FragmentCredentialsBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.thekhaeng.pushdownanim.PushDownAnim;
+
+import java.net.URI;
 
 public class ConnectFragment extends Fragment {
 
@@ -50,8 +43,13 @@ public class ConnectFragment extends Fragment {
         View view = binding.getRoot();
 
 
+
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "App Opened!");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         binding.secretText.setOnClickListener(view1 -> {
             //binding.secretText.setTextColor(ContextCompat.getColor(getContext(),R.color.grey_subtext));
@@ -59,6 +57,10 @@ public class ConnectFragment extends Fragment {
         });
 
         binding.menu.setOnClickListener(view1 -> {
+
+            //https://docs.google.com/forms/d/e/1FAIpQLSfEBBnnTgGj4cnQs1STirvXNte4uINYp0CpTnVkHq-UaLw4gg/viewform?usp=pp_url&entry.966055269=ANDROIDAPIVERSION
+
+
             PopupMenu popup = new PopupMenu(getContext(), binding.menu);
             //Inflating the Popup using xml file
             popup.getMenuInflater()
@@ -69,7 +71,7 @@ public class ConnectFragment extends Fragment {
                 public boolean onMenuItemClick(MenuItem item) {
 
                     if ("Feedback".equals(item.getTitle())) {
-                        sendEmail();
+                        openForms();
                     }
                     return true;
                 }
@@ -93,6 +95,13 @@ public class ConnectFragment extends Fragment {
 
         });
 
+
+        PushDownAnim.setPushDownAnimTo(binding.connectBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
         binding.connectBtn.setOnClickListener(view1 -> {
@@ -135,8 +144,40 @@ public class ConnectFragment extends Fragment {
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     Toast.makeText(getActivity(), "Please Connect To ABESEC WIFI", Toast.LENGTH_LONG).show();
                 }else {
-                    Intent intent = new Intent(getActivity(),Login.class);
-                    startActivity(intent);
+
+                    binding.connectBtn.setVisibility(View.INVISIBLE);
+                    binding.animView.setVisibility(View.VISIBLE);
+
+                    binding.animView.playAnimation();
+
+                    binding.animView.addAnimatorListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animator) {
+
+                            Intent intent = new Intent(getActivity(),Login.class);
+                            startActivity(intent);
+                            binding.connectBtn.setVisibility(View.VISIBLE);
+                            binding.animView.setVisibility(View.GONE);
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animator) {
+
+                        }
+                    });
+
+
                 }
 
 
@@ -146,15 +187,17 @@ public class ConnectFragment extends Fragment {
         return view;
     }
 
-    private void sendEmail(){
-        Intent email = new Intent(Intent.ACTION_SEND);
-        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"utkarshsingh.5474@gmail.com"});
-        email.putExtra(Intent.EXTRA_SUBJECT, "WifiConnect App FeedBack");
-        email.putExtra(Intent.EXTRA_TEXT, "Android API Version: " + Build.VERSION.SDK_INT);
+    private void openForms(){
 
-        //need this to prompts email client only
-        email.setType("message/rfc822");
 
-        startActivity(Intent.createChooser(email, "Choose an Email client :"));
+        String url = "https://docs.google.com/forms/d/e/1FAIpQLSfEBBnnTgGj4cnQs1STirvXNte4uINYp0CpTnVkHq-UaLw4gg/viewform?usp=pp_url&entry.966055269=" + Build.VERSION.SDK_INT;
+
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+
+
+
+
     }
 }

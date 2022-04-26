@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.wificonnect.databinding.FragmentCredentialsBinding;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.thekhaeng.pushdownanim.PushDownAnim;
 
 public class CredentialsFragment extends Fragment {
 
@@ -128,6 +129,13 @@ public class CredentialsFragment extends Fragment {
             }
         });
 
+
+        PushDownAnim.setPushDownAnimTo(binding.btnSave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         binding.btnSave.setOnClickListener(view1 -> {
 

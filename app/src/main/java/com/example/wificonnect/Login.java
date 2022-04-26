@@ -131,6 +131,10 @@ public class Login extends AppCompatActivity {
                 });
 
                 if (url.contains("google")){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "LoggedInSuccessfully!");
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
                     Toast.makeText(getApplicationContext(), "Connected Successfully", Toast.LENGTH_LONG).show();
                     finishAffinity();
                 }

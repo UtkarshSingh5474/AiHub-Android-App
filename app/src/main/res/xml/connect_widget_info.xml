@@ -5,7 +5,7 @@
     android:initialLayout="@layout/connect_widget"
     android:minWidth="30dp"
     android:minHeight="30dp"
-    android:previewImage="@drawable/ic_wi_fi_widget"
-    android:resizeMode="horizontal|vertical"
+    android:previewImage="@drawable/ic_connectbtn"
+    android:resizeMode="horizontal |vertical"
     android:updatePeriodMillis="86400000"
     android:widgetCategory="home_screen" />
