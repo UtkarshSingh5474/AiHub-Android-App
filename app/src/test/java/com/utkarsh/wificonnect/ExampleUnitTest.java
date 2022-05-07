@@ -1,4 +1,4 @@
-package com.example.wificonnect;
+package com.utkarsh.wificonnect;
 
 import org.junit.Test;
 

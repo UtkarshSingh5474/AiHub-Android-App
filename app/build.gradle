@@ -10,11 +10,11 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.wificonnect"
+        applicationId "com.utkarsh.wificonnect"
         minSdk 24
         targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.01"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -1,25 +1,15 @@
-package com.example.wificonnect;
+package com.utkarsh.wificonnect;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.example.wificonnect.databinding.FragmentCredentialsBinding;
-import com.example.wificonnect.databinding.FragmentToolsBinding;
-
-import java.util.concurrent.TimeUnit;
+import com.utkarsh.wificonnect.databinding.FragmentCredentialsBinding;
+import com.utkarsh.wificonnect.databinding.FragmentToolsBinding;
 
 public class ToolsFragment extends Fragment {
 
@@ -32,7 +22,7 @@ public class ToolsFragment extends Fragment {
         binding = FragmentToolsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-
+        binding.version.setText("Version: "+BuildConfig.VERSION_CODE + "("+BuildConfig.VERSION_NAME+")");
         //Spinner hrSpinner = (Spinner) binding.hrSpinner;
         //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
         //        R.array.Hours, android.R.layout.simple_spinner_item);

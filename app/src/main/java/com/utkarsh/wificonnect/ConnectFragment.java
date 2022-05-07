@@ -1,4 +1,4 @@
-package com.example.wificonnect;
+package com.utkarsh.wificonnect;
 
 import android.animation.Animator;
 import android.app.PendingIntent;
@@ -20,20 +20,20 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.wificonnect.databinding.FragmentConnectBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.thekhaeng.pushdownanim.PushDownAnim;
-
-import java.net.URI;
+import com.utkarsh.wificonnect.databinding.FragmentConnectBinding;
 
 public class ConnectFragment extends Fragment {
 
     private FragmentConnectBinding binding;
     private FirebaseAnalytics mFirebaseAnalytics;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +52,7 @@ public class ConnectFragment extends Fragment {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         binding.secretText.setOnClickListener(view1 -> {
-            //binding.secretText.setTextColor(ContextCompat.getColor(getContext(),R.color.grey_subtext));
+
             Toast.makeText(getContext(), "Developed By Utkarsh Singh", Toast.LENGTH_SHORT).show();
         });
 
