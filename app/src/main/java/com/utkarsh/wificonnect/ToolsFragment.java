@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.utkarsh.wificonnect.databinding.FragmentCredentialsBinding;
 import com.utkarsh.wificonnect.databinding.FragmentToolsBinding;
@@ -23,22 +24,11 @@ public class ToolsFragment extends Fragment {
         View view = binding.getRoot();
 
         binding.version.setText("Version: "+BuildConfig.VERSION_CODE + "("+BuildConfig.VERSION_NAME+")");
-        //Spinner hrSpinner = (Spinner) binding.hrSpinner;
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-        //        R.array.Hours, android.R.layout.simple_spinner_item);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //hrSpinner.setAdapter(adapter);
-        //hrSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-        //    @Override
-        //    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        //        hrSpinner.getItemAtPosition(i);
-        //    }
-//
-        //    @Override
-        //    public void onNothingSelected(AdapterView<?> adapterView) {
-        //        hrSpinner.setSelection(0);
-        //    }
-        //});
+
+        binding.version.setOnClickListener(view1 -> {
+
+            Toast.makeText(getContext(), "Developed By Utkarsh Singh", Toast.LENGTH_SHORT).show();
+        });
 
 
 

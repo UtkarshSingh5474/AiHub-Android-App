@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -42,7 +44,12 @@ import java.util.Set;
 
 
 public class Login extends AppCompatActivity {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
+    private WebView myWebView;
     private FirebaseAnalytics mFirebaseAnalytics;
 
     private static final int[] CERTIFICATES = {
@@ -68,9 +75,7 @@ public class Login extends AppCompatActivity {
         }
 
 
-        findViewById(R.id.back).setOnClickListener(view -> {
-            finish();
-        });
+
 
 
         String url = "https://192.168.1.254:8090";
@@ -106,7 +111,7 @@ public class Login extends AppCompatActivity {
 
         loadSSLCertificates();
 
-        WebView myWebView = (WebView) findViewById(R.id.webview);
+        myWebView = (WebView) findViewById(R.id.webview);
 
 
         final String js = "javascript:document.getElementById('username').value='"+username+"';"
@@ -170,6 +175,35 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+
+                new MaterialAlertDialogBuilder(Login.this, R.style.AlertDialogTheme)
+                        .setTitle("Make Sure You Are Connected To ABES WiFi")
+                        .setMessage("It looks like you are not connected to the ABES WiFi network. Do you want to open the WIFI settings?")
+
+                        .setNegativeButton("Go Back", ((dialogInterface, i) -> {
+
+                            myWebView.destroy();
+                            finish();
+
+                        }))
+                        .setPositiveButton("Open WiFi Settings", ((dialogInterface, i) -> {
+
+                            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                            myWebView.destroy();
+                            finish();
+                            Toast.makeText(getApplication(), "Please Connect To ABESEC WIFI", Toast.LENGTH_LONG).show();
+
+                        }))
+                        .setCancelable(false)
+                        .show();
+
+
+
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
@@ -191,14 +225,20 @@ public class Login extends AppCompatActivity {
                 if (url.contains("google")){
 
                     Bundle bundle = new Bundle();
-                    bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "LoggedInSuccessfully!");
-                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+                    bundle.putString("connected", "ConnectedSuccessfully!");
+                    mFirebaseAnalytics.logEvent("connected_success", bundle);
                     Toast.makeText(getApplicationContext(), "Connected Successfully", Toast.LENGTH_LONG).show();
+                    myWebView.destroy();
                     finishAffinity();
                 }
 
             }});
 
+
+        findViewById(R.id.back).setOnClickListener(view -> {
+            myWebView.destroy();
+            finish();
+        });
 
 
     }
@@ -233,4 +273,10 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        myWebView.destroy();
+
+    }
 }
