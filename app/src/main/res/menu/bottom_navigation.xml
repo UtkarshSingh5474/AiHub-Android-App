@@ -15,5 +15,5 @@
     <item
         android:id="@+id/nav_creds"
         android:icon="@drawable/ic_credentials"
-        android:title="My Account" />
+        android:title="Credentials" />
 </menu>
