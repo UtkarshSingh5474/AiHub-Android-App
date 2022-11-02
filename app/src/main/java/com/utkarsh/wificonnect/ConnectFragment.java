@@ -126,7 +126,7 @@ public class ConnectFragment extends Fragment {
                 ComponentName myProvider = new ComponentName(getContext(), ConnectWidget.class);
                 Intent pinnedWidgetCallbackIntent = new Intent(getContext(), ConnectWidget.class);
                 PendingIntent successCallback = PendingIntent.getBroadcast(getContext(), 0,
-                        pinnedWidgetCallbackIntent, 0);
+                        pinnedWidgetCallbackIntent, PendingIntent.FLAG_IMMUTABLE);
                 mAppWidgetManager.requestPinAppWidget(myProvider, null, successCallback);
             }
 

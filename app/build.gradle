@@ -6,7 +6,7 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file('D:\\Android\\Android Keys\\WifiConnect\\WifiConnect.jks')
+            storeFile file('D:\\Android Projects\\Android Keys\\WifiConnect\\WifiConnect.jks')
             storePassword 'Utk5474@5474Utk'
             keyPassword 'Utk5474@5474Utk'
             keyAlias 'wificonnect'
@@ -20,9 +20,9 @@ android {
     defaultConfig {
         applicationId "com.utkarsh.wificonnect"
         minSdk 24
-        targetSdk 30
-        versionCode 7
-        versionName "1.07"
+        targetSdk 31
+        versionCode 11
+        versionName "1.08"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
