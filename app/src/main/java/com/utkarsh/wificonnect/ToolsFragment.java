@@ -10,17 +10,18 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.utkarsh.wificonnect.databinding.FragmentDeveloperBinding;
+import com.utkarsh.wificonnect.databinding.FragmentToolsBinding;
 
-public class DeveloperFragment extends Fragment {
 
-    private FragmentDeveloperBinding binding;
+public class ToolsFragment extends Fragment {
+
+    private FragmentToolsBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentDeveloperBinding.inflate(inflater, container, false);
+        binding = FragmentToolsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         binding.version.setText("Version: "+ BuildConfig.VERSION_CODE + "("+BuildConfig.VERSION_NAME+")");
