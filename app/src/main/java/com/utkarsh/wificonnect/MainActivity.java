@@ -5,23 +5,16 @@ import static com.google.firebase.crashlytics.internal.Logger.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.play.core.review.ReviewInfo;
-import com.google.android.play.core.review.ReviewManager;
-import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.review.model.ReviewErrorCode;
-import com.google.android.play.core.review.testing.FakeReviewManager;
 import com.utkarsh.wificonnect.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,13 +28,9 @@ BottomNavigationView bottomNav;
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View v = binding.getRoot();
         setContentView(v);
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-        
-
 
         bottomNav = binding.bottomNavigation;
-        bottomNav.setBackgroundColor(getResources().getColor(R.color.bottom_menu));
+        bottomNav.setBackgroundColor(ContextCompat.getColor(this, R.color.bottom_menu));
 
 
         bottomNav.setSelectedItemId(R.id.nav_connect);
@@ -54,30 +43,30 @@ BottomNavigationView bottomNav;
 
 
 
-        bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
+        bottomNav.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
 
-                switch (item.getItemId()) {
-                    case R.id.nav_tools:
-                        selectedFragment = new ToolsFragment();
-                        break;
+            switch (item.getItemId()) {
+                case R.id.nav_developer:
+                    selectedFragment = new DeveloperFragment();
+                    break;
 
-                    case R.id.nav_connect:
-                        selectedFragment = new ConnectFragment();
-                        break;
+                case R.id.nav_connect:
+                    selectedFragment = new ConnectFragment();
+                    break;
 
-                    case R.id.nav_creds:
-                        selectedFragment = new CredentialsFragment();
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        selectedFragment).commit();
+                case R.id.nav_creds:
+                    selectedFragment = new CredentialsFragment();
+                    break;
+                default:
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    selectedFragment).commit();
 
 
-                return true;
-            }});
+            return true;
+        });
 
 
 
