@@ -3,9 +3,9 @@
 
 
     <item
-        android:id="@+id/nav_tools"
-        android:icon="@drawable/ic_settings"
-        android:title="Tools" />
+        android:id="@+id/nav_developer"
+        android:icon="@drawable/ic_coder"
+        android:title="Developer" />
 
     <item
         android:id="@+id/nav_connect"
