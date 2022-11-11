@@ -22,7 +22,7 @@ public class ConnectWidget extends AppWidgetProvider {
 
         Intent configIntent = new Intent(context, Login.class);
 
-        PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
+        PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, PendingIntent.FLAG_IMMUTABLE);
 
         views.setOnClickPendingIntent(R.id.connectBtn, configPendingIntent);
         // Instruct the widget manager to update the widget
