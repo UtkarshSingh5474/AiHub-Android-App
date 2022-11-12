@@ -5,42 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_purple_background"
-    tools:context="com.utkarsh.wificonnect.DeveloperFragment">
+    tools:context="com.utkarsh.wificonnect.ToolsFragment">
+
+
+
+        <TextView
+            android:id="@+id/toolsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="Tools"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolsTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/benchnine_bold"
+        android:text="Coming Soon.."
+        android:textColor="@color/grey_subtext"
+        android:textSize="38sp" />
+
 
     <LinearLayout
+        android:id="@+id/developerLinearLayout"
+        android:layout_marginBottom="12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/version"
+        android:foregroundGravity="bottom"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="12dp"
-            android:fontFamily="@font/ubuntu_bold"
-            android:text="\u003C /\u003E"
-            android:textColor="@color/white"
-            android:textSize="40sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="-6dp"
-            android:fontFamily="@font/ubuntu_medium"
-            android:text="Developer,"
-            android:textColor="@color/white"
-            android:textSize="40sp" />
-
-        <ImageView
-            android:layout_width="400px"
-            android:layout_height="400px"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:elevation="40dp"
-            android:src="@drawable/me_squircle" />
-
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="@string/about_developer"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,16 +58,9 @@
             android:fontFamily="@font/benchnine_bold"
             android:text="Utkarsh Singh"
             android:textColor="#E4EDF1"
-            android:textSize="38sp" />
+            android:textSize="28sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/ubuntu_medium"
-            android:text="Software Developer"
-            android:textColor="@color/grey_subtext"
-            android:textSize="18sp" />
+
 
         <TextView
             android:layout_width="wrap_content"

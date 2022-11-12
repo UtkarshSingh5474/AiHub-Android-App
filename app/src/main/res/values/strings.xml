@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="wifi_note"><u><b>Note:</b></u> Please Connect To <b>ABESEC</b> Wifi Network Before Pressing The Connect Button.</string>
     <string name="creds_note"><u><b>Note:</b></u> Your Credentials Will Only Be Saved On Your Phone Locally.</string>
+    <string name="about_developer"><u><b>\u003C \u002F\u003E</b></u></string>
 
 
     <string-array name="Hours">

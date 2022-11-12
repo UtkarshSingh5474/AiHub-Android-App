@@ -2,19 +2,15 @@ package com.utkarsh.wificonnect;
 
 import static com.google.firebase.crashlytics.internal.Logger.TAG;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.utkarsh.wificonnect.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,8 +43,8 @@ BottomNavigationView bottomNav;
             Fragment selectedFragment = null;
 
             switch (item.getItemId()) {
-                case R.id.nav_developer:
-                    selectedFragment = new DeveloperFragment();
+                case R.id.nav_tools:
+                    selectedFragment = new ToolsFragment();
                     break;
 
                 case R.id.nav_connect:
