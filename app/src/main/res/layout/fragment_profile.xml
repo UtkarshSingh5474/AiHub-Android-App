@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ProfileFragment"
+    android:background="@color/white">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/topCardView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/primary"
+        style="@style/CustomCardViewStyleRight">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="14dp"
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="32dp">
+            <LinearLayout
+                android:gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/topCardView"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="12dp"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:text="Hi, Utkarsh"
+                    android:textColor="@color/white"
+                    android:textSize="38sp" />
+                <TextView
+                    android:id="@+id/emailTV"
+                    android:layout_below="@+id/topCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:text="utkarshsingh.5474@gmail.com"
+                    android:fontFamily="@font/ubuntu"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/phoneTV"
+                    android:layout_below="@+id/topCardView"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="22dp"
+                    android:text="7827649326"
+                    android:fontFamily="@font/ubuntu"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+    <LinearLayout
+        android:id="@+id/optionsLL"
+        android:layout_below="@id/topCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/myAds"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Progress"
+                android:textSize="22sp"
+                android:fontFamily="@font/arielroundedmtbold"
+                android:padding="16dp"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textSize="22sp"
+                android:fontFamily="@font/arielroundedmtbold"
+                android:padding="16dp"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/help"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Help And Support"
+                android:textSize="22sp"
+                android:fontFamily="@font/arielroundedmtbold"
+                android:padding="16dp"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feedback"
+                android:textSize="22sp"
+                android:fontFamily="@font/arielroundedmtbold"
+                android:padding="16dp"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/terms"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terms And Conditons"
+                android:textSize="22sp"
+                android:fontFamily="@font/arielroundedmtbold"
+                android:padding="16dp"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCreateLesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/optionsLL"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="22dp"
+        android:padding="14dp"
+        android:visibility="gone"
+        android:text="Create New Lesson"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCreateLesson"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="22dp"
+        android:drawableLeft="@drawable/logout"
+        android:padding="14dp"
+        android:text="Sign Out"
+        android:textSize="18sp" />
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "887429654598",
+    "project_id": "aihub-79944",
+    "storage_bucket": "aihub-79944.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887429654598:android:7a9043c6dffb50b6e88247",
+        "android_client_info": {
+          "package_name": "com.example.aihub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887429654598-iffea0li6b1jcnae6rd7qj9molf4o1vs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS8KDSDivCQkUZqV9Gg6al4oyjHy4Kqic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887429654598-iffea0li6b1jcnae6rd7qj9molf4o1vs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

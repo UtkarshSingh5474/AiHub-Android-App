@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PredictionActivity">
+    <LinearLayout
+        android:id="@+id/actionbarLinearLayout"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="Model"
+            android:textColor="@color/black"
+            android:fontFamily="@font/arielroundedmtbold"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:textAlignment="center"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNotebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/actionbarLinearLayout"
+        android:layout_gravity="right"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:foregroundGravity="right"
+        android:gravity="right"
+        android:text="Notebook" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnNotebook"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_used_car" />
+
+    <ScrollView
+        android:layout_below="@id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_below="@id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="-14dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Bought Year(1980-2020)"
+                android:textSize="24sp" />
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="-14dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/year"
+                    android:padding="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ubuntu_light"
+                    android:textColor="@color/primary"
+                    android:inputType="number"
+                    android:hint="Select Year"
+                    android:maxLength="4"
+                    android:textSize="24sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-14dp"
+                android:text="Location"
+                android:layout_marginTop="20dp"
+                android:textSize="24sp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.qandeelabbassi.dropsy.DropDownView
+                android:layout_centerInParent="true"
+                android:id="@+id/locationDrpDwn"
+                app:dropsyItems="@array/used_car_prediction_locations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+
+                app:dropsyElevation="0dp"
+                app:dropsyLabel="Location"
+                app:dropsySelector="@color/dropsy_selector"
+                app:dropsyLabelColor="@color/dropsy_text_color_secondary"
+                app:dropsyValueColor="@color/primary_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-14dp"
+                android:text="Fuel Type"
+                android:layout_marginTop="12dp"
+                android:textSize="24sp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:layout_gravity="center_horizontal"/>
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:elevation="6dp"
+                android:id="@+id/fuelToggleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:checkedButton="@id/btn_one_way"
+                app:singleSelection="true">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/petrolBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Petrol" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/dieselBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Diesel" />
+
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/lpgBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="LPG" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-14dp"
+                android:text="Transmission"
+                android:layout_marginTop="12dp"
+                android:textSize="24sp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:layout_gravity="center_horizontal"/>
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:elevation="6dp"
+                android:id="@+id/transmissionToggleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:checkedButton="@id/btn_one_way"
+                app:singleSelection="true">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/manualBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Manual" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/automaticBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Automatic" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-14dp"
+                android:text="Owner Type"
+                android:layout_marginTop="12dp"
+                android:textSize="24sp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:layout_gravity="center_horizontal"/>
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:elevation="6dp"
+                android:id="@+id/ownerToggleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:checkedButton="@id/btn_one_way"
+                app:singleSelection="true">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/firstOwnerBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="First" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/secondOwnerBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Second" />
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/thirdOwnerBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Third" />
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/fourthAndAboveOwnerBtn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Four+" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:id="@+id/textfieldAdmNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corners_unselected"
+                android:hint="Kilometers Driven"
+                android:textColorHint="@color/grey_subtext"
+                app:startIconTint="@color/grey_subtext"
+                app:boxStrokeColor="@color/primary_light"
+                app:placeholderTextColor="@color/primary_light"
+                app:hintTextColor="@color/primary_light"
+                app:backgroundTint="@color/primary_light"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:id="@+id/kmsDriven"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/primary"
+                    android:inputType="number"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Seats (1-12)"
+                android:textSize="24sp" />
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="-14dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/seats"
+                    android:padding="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ubuntu_light"
+                    android:textColor="@color/primary"
+                    android:inputType="number"
+                    android:hint="Enter Seats"
+                    android:maxLength="2"
+                    android:textSize="24sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Mileage (in Km/l)"
+                android:textSize="24sp" />
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="-14dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/mileage"
+                    android:padding="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ubuntu_light"
+                    android:textColor="@color/primary"
+                    android:inputType="numberDecimal"
+                    android:hint="Enter Mileage"
+                    android:textSize="24sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Engine (in CC)"
+                android:textSize="24sp" />
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="-14dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/engine"
+                    android:padding="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ubuntu_light"
+                    android:textColor="@color/primary"
+                    android:inputType="numberDecimal"
+                    android:hint="Enter Engine(CC)"
+                    android:textSize="24sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Power (in BHP)"
+                android:textSize="24sp" />
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="-14dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/power"
+                    android:padding="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ubuntu_light"
+                    android:textColor="@color/primary"
+                    android:inputType="numberDecimal"
+                    android:hint="Enter Power(BHP)"
+                    android:textSize="24sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Predict"
+                android:textSize="32sp"
+                ></Button>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Predicted Price (in Rs)"
+                android:textSize="28sp" />
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="-14dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/result"
+                    android:padding="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ubuntu_light"
+                    android:textColor="@color/green"
+                    android:inputType="number"
+                    android:text="Click Predict"
+                    android:layout_marginBottom="33dp"
+                    android:textSize="24sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+</RelativeLayout>

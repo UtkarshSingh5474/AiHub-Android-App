@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.HubFragment">
+
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/topCardView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="12dp"
+        app:cardCornerRadius="0dp"
+        app:cardBackgroundColor="@color/primary">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="14dp"
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="32dp">
+
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/topCardView"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="12dp"
+                    android:fontFamily="@font/ubuntu_medium"
+
+                    android:text="Models"
+                    android:textColor="@color/white"
+                    android:textSize="38sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/topCardView"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="22dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="Explore a varierty of Ml models"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topCardView"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_weight="1"
+                android:id="@+id/btnFruit"
+                app:cardBackgroundColor="@color/card_background"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/primary_light"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_fruits" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fruits"
+                        android:fontFamily="@font/ubuntu_medium"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Classifier"
+                        android:textColor="@color/grey_subtext"
+                        android:fontFamily="@font/ubuntu_light"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_weight="1"
+
+                android:id="@+id/btnIndianFood"
+                app:cardBackgroundColor="@color/card_background"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/primary_light"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_indian_food" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Indian Food"
+                        android:fontFamily="@font/ubuntu_medium"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Classifier"
+                        android:textColor="@color/grey_subtext"
+                        android:fontFamily="@font/ubuntu_light"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_weight="1"
+
+                android:id="@+id/btnFood"
+                app:cardBackgroundColor="@color/card_background"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/primary_light"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_indian_food" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Food"
+                        android:fontFamily="@font/ubuntu_medium"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Classifier"
+                        android:textColor="@color/grey_subtext"
+                        android:fontFamily="@font/ubuntu_light"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_weight="1"
+
+                android:id="@+id/btnUsedCarPrice"
+                app:cardBackgroundColor="@color/card_background"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/primary_light"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_car_sale" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Used Car Price"
+                        android:fontFamily="@font/ubuntu_medium"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Prediction"
+                        android:textColor="@color/grey_subtext"
+                        android:fontFamily="@font/ubuntu_light"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_weight="1"
+
+            android:id="@+id/btnSign"
+            app:cardBackgroundColor="@color/card_background"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/primary_light"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_sign" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Language"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Classifier"
+                    android:textColor="@color/grey_subtext"
+                    android:fontFamily="@font/ubuntu_light"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+        
+    </LinearLayout>
+
+
+</RelativeLayout>

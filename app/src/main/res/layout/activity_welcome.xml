@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#F3EFF5"
+    android:weightSum="4"
+    tools:context=".WelcomeActivity">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/imageCV"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#DAEBE8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="44dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#DAEBE8"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="25dp"
+                android:src="@drawable/welcome_ic" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:id="@+id/titleTv"
+        android:layout_weight="1"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/arielroundedmtbold"
+        android:text="Start your AI/ML\nLearning journey here"
+        android:textAlignment="center"
+        android:textColor="#292434"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/descTv"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/arielroundedmtbold"
+        android:text="Discover the exciting world of AI and machine learning. Learn how to train your own AI models"
+        android:textAlignment="center"
+        android:textColor="@color/grey_subtext"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btngetstarted"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/round_shape_btn"
+        app:backgroundTint="@color/blue_accent"
+        android:fontFamily="@font/arielroundedmtbold"
+        android:text="Get Started"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

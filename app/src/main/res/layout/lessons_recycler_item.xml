@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/lessonCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="6dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#DCDCDC"
+        app:cardCornerRadius="24dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/indexTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Lesson 1"
+                android:textColor="@color/primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/indexTextView"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:text="Introduction"
+                android:textColor="#305F72"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="25sp"
+                android:autoSizeMinTextSize="10sp"/>
+
+            <TextView
+                android:id="@+id/countTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameTextView"
+                android:layout_marginLeft="20dp"
+                android:text="3 Sub Lessons"
+                android:textColor="@color/primary"
+                android:textSize="16sp" />
+
+            <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+                android:id="@+id/circularProgress"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                app:direction="clockwise"
+                app:drawDot="false"
+                app:enableProgressAnimation="true"
+                app:formattingPattern="%.0f%%"
+                app:progressCap="round"
+                app:progressColor="@color/red"
+                app:progressStrokeWidth="2dp"
+                app:startAngle="270"
+                app:textColor="@color/grey_subtext"
+                app:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

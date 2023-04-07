@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateLessonActivity">
+
+    <CheckBox
+        android:id="@+id/isNewLesson"
+        android:text="New Lesson?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <EditText
+        android:id="@+id/lessonIndexTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lesson Index"/>
+    <EditText
+        android:id="@+id/lessonNameTextView"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:hint="Lesson name"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        />
+
+    <EditText
+        android:id="@+id/subLessonIndexTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SubLesson Index"/>
+    <EditText
+        android:id="@+id/subLessonNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SubLesson name"/>
+    <EditText
+        android:id="@+id/subLessonCardsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sublesson Cards"/>
+
+
+    <Button
+        android:id="@+id/btnCreateLesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Lesson"/>
+
+
+</LinearLayout>
